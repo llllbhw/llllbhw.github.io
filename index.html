@@ -1,11 +1,348 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0;url='http://llllbhw.github.io/love'">
-    <title>跳转中...</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Academic homepage of Changhao Liu.">
+  <meta name="color-scheme" content="light dark">
+  <title>Changhao Liu · Academic Homepage</title>
+  <style>
+    :root {
+      --paper: #f4f0e8;
+      --paper-deep: #e8e0d2;
+      --ink: #17202a;
+      --muted: #5f6b76;
+      --accent: #9b2c2c;
+      --accent-dark: #741f1f;
+      --line: rgba(23, 32, 42, 0.16);
+      --card: rgba(255, 255, 255, 0.62);
+      --shadow: 0 24px 70px rgba(54, 42, 28, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 88% 7%, rgba(155, 44, 44, 0.08), transparent 27rem),
+        linear-gradient(135deg, var(--paper) 0%, #faf8f4 54%, var(--paper-deep) 100%);
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.24;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");
+    }
+
+    a { color: inherit; }
+
+    .shell {
+      width: min(1080px, calc(100% - 40px));
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .nav {
+      min-height: 88px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .monogram {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 0.92rem;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible { color: var(--accent); }
+
+    .hero {
+      min-height: 67vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.55fr);
+      gap: clamp(48px, 9vw, 120px);
+      align-items: center;
+      padding: 84px 0 92px;
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.19em;
+      text-transform: uppercase;
+    }
+
+    h1, h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(4rem, 9.5vw, 8.5rem);
+      line-height: 0.84;
+      letter-spacing: -0.065em;
+    }
+
+    h1 span { display: block; }
+
+    h1 .last {
+      color: var(--accent);
+      margin-left: clamp(34px, 8vw, 110px);
+      font-style: italic;
+    }
+
+    .intro {
+      max-width: 650px;
+      margin: 34px 0 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 1.8vw, 1.18rem);
+    }
+
+    .identity-card {
+      padding: 30px;
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .portrait-mark {
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      margin-bottom: 26px;
+      color: #f8f3ea;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.18), transparent 45%),
+        var(--accent);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(4.5rem, 9vw, 7.5rem);
+      letter-spacing: -0.08em;
+    }
+
+    .identity-card dl { margin: 0; }
+
+    .identity-row {
+      padding: 14px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .identity-row:first-of-type { border-top: 0; }
+
+    dt {
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    dd { margin: 3px 0 0; }
+
+    dd a {
+      text-decoration-color: rgba(155, 44, 44, 0.4);
+      text-underline-offset: 4px;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 0.58fr 1.42fr;
+      gap: clamp(42px, 8vw, 100px);
+      padding: 92px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+    }
+
+    .section-number {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--accent);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+    }
+
+    .about-copy p {
+      margin: 0 0 20px;
+      font-size: 1.05rem;
+    }
+
+    .notice {
+      margin-top: 34px;
+      padding: 18px 20px;
+      color: var(--accent-dark);
+      background: rgba(155, 44, 44, 0.07);
+      border-left: 3px solid var(--accent);
+      font-size: 0.92rem;
+    }
+
+    footer {
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      font-size: 0.88rem;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-underline-offset: 4px;
+    }
+
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 28px, 620px); }
+      .nav { min-height: 72px; }
+      .nav-links { gap: 16px; font-size: 0.82rem; }
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 52px;
+        padding: 62px 0 72px;
+      }
+      h1 { font-size: clamp(4rem, 22vw, 7rem); }
+      .identity-card { padding: 20px; }
+      .portrait-mark { font-size: 6rem; }
+      .content { grid-template-columns: 1fr; padding: 72px 0; }
+      footer { flex-direction: column; align-items: flex-start; justify-content: center; padding: 28px 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #171819;
+        --paper-deep: #202223;
+        --ink: #f0ece4;
+        --muted: #b9b6af;
+        --accent: #e07a6f;
+        --accent-dark: #f09a90;
+        --line: rgba(240, 236, 228, 0.15);
+        --card: rgba(36, 38, 39, 0.72);
+        --shadow: 0 24px 70px rgba(0, 0, 0, 0.3);
+      }
+      body { background: radial-gradient(circle at 88% 7%, rgba(224, 122, 111, 0.10), transparent 27rem), linear-gradient(135deg, var(--paper), var(--paper-deep)); }
+      .identity-card { border-color: rgba(255, 255, 255, 0.08); }
+    }
+  </style>
 </head>
 <body>
-    <p>如果页面没有自动跳转到汤汤网页，请 <a href="http://37tt.github.io/tang-love">点击这里</a>。</p>
+  <header class="shell nav" aria-label="Primary navigation">
+    <a class="monogram" href="#top" aria-label="Back to top">CL</a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="mailto:YOUR_EMAIL@example.com">Email</a>
+      <a href="https://github.com/llllbhw">GitHub</a>
+    </nav>
+  </header>
+
+  <main id="top" class="shell">
+    <section class="hero" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">Personal academic homepage</p>
+        <h1 id="page-title"><span>Changhao</span><span class="last">Liu</span></h1>
+        <p class="intro">
+          Welcome to my academic homepage. This page provides my public contact
+          information and will be updated with research interests, publications,
+          and projects.
+        </p>
+      </div>
+
+      <aside class="identity-card" aria-label="Contact details">
+        <div class="portrait-mark" aria-hidden="true">CL</div>
+        <dl>
+          <div class="identity-row">
+            <dt>Name</dt>
+            <dd>Changhao Liu</dd>
+          </div>
+          <div class="identity-row">
+            <dt>Affiliation</dt>
+            <dd>YOUR_AFFILIATION</dd>
+          </div>
+          <div class="identity-row">
+            <dt>Email</dt>
+            <dd><a href="mailto:YOUR_EMAIL@example.com">YOUR_EMAIL@example.com</a></dd>
+          </div>
+          <div class="identity-row">
+            <dt>GitHub</dt>
+            <dd><a href="https://github.com/llllbhw">github.com/llllbhw</a></dd>
+          </div>
+        </dl>
+      </aside>
+    </section>
+
+    <section id="about" class="content" aria-labelledby="about-title">
+      <div>
+        <span class="section-number">01 / About</span>
+        <h2 id="about-title">A concise public profile.</h2>
+      </div>
+      <div class="about-copy">
+        <p>
+          I am Changhao Liu. This website serves as my public academic profile and
+          a stable point of contact for the research community.
+        </p>
+        <p>
+          Research interests, selected work, publications, and other professional
+          information will be added here as they become available.
+        </p>
+        <div class="notice">
+          Before publishing, replace <strong>YOUR_EMAIL@example.com</strong> and
+          <strong>YOUR_AFFILIATION</strong> in this file with your real public details.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="shell">
+    <span>© <span id="year"></span> Changhao Liu</span>
+    <a href="mailto:YOUR_EMAIL@example.com">Get in touch</a>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
